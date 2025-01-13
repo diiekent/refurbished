@@ -39,22 +39,6 @@ const mockProducts = [
     image: "https://via.placeholder.com/200x150",
     description: "Eine refurbished Kamera mit beeindruckender 24 MP Bildqualität.",
   },
-  {
-    id: 6,
-    title: "Refurbished Gaming-PC",
-    price: 1299.99,
-    category: "Computing",
-    image: "https://via.placeholder.com/200x150",
-    description: "Ein leistungsstarker refurbished Gaming-PC für hohe Anforderungen.",
-  },
-  {
-    id: 7,
-    title: "Refurbished Bluetooth Lautsprecher",
-    price: 89.99,
-    category: "Zubehör",
-    image: "https://via.placeholder.com/200x150",
-    description: "Ein kompakter refurbished Bluetooth Lautsprecher mit gutem Sound.",
-  }
 ];
 
 export default mockProducts;
