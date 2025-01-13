@@ -1,0 +1,52 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #0073e6;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.search {
+    text-align: center;
+    margin-top: 20px;
+}
+
+input, button {
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+}
+
+#results {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#resultContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product {
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 200px;
+    text-align: center;
+}
+
+.product h3 {
+    font-size: 18px;
+    margin: 0;
+}
+
+.product p {
+    font-size: 16px;
+}
