@@ -9,7 +9,7 @@ document.getElementById('searchButton').addEventListener('click', function() {
 });
 
 function searchProducts(query) {
-    // Simulierter API-Aufruf mit mock-Daten
+    // Simulierte Produktdaten (mocked data)
     const mockData = [
         { name: "Refurbished Laptop A", price: 299.99, seller: "TechStore" },
         { name: "Refurbished Smartphone B", price: 149.99, seller: "GadgetShop" },
@@ -33,6 +33,7 @@ function displayResults(products) {
     if (products.length > 0) {
         products.forEach(product => {
             const productDiv = document.createElement('div');
+            productDiv.classList.add('col-md-3', 'mb-4'); // Bootstrap Grid-Klassen für Layout
             productDiv.classList.add('product');
             productDiv.innerHTML = `
                 <h3>${product.name}</h3>
