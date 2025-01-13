@@ -7,21 +7,65 @@ document.getElementById('searchButton').addEventListener('click', function () {
     }
 });
 
-function searchProducts(query) {
-    const apiUrl = `https://fakestoreapi.com/products`;
+// Die Mock-Daten, die wir vorher definiert haben
+const mockData = [
+  {
+    "id": 1,
+    "title": "Refurbished Laptop 15.6 Zoll",
+    "price": 799.99,
+    "category": "Elektronik",
+    "image": "https://fakestoreapi.com/img/laptop.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Refurbished iPhone 12",
+    "price": 899.99,
+    "category": "Handys",
+    "image": "https://fakestoreapi.com/img/iphone.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Refurbished Tablet 10 Zoll",
+    "price": 499.99,
+    "category": "Elektronik",
+    "image": "https://fakestoreapi.com/img/tablet.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Refurbished Smartwatch",
+    "price": 199.99,
+    "category": "Zubehör",
+    "image": "https://fakestoreapi.com/img/smartwatch.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Refurbished Kamera 24 MP",
+    "price": 499.00,
+    "category": "Elektronik",
+    "image": "https://fakestoreapi.com/img/camera.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Refurbished Gaming-PC",
+    "price": 1299.99,
+    "category": "Computing",
+    "image": "https://fakestoreapi.com/img/gaming-pc.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Refurbished Bluetooth Lautsprecher",
+    "price": 89.99,
+    "category": "Zubehör",
+    "image": "https://fakestoreapi.com/img/speaker.jpg"
+  }
+];
 
-    fetch(apiUrl)
-        .then(response => response.json()) // Die Antwort als JSON parsen
-        .then(data => {
-            const filteredProducts = data.filter(product =>
-                product.title.toLowerCase().includes(query)
-            );
-            displayResults(filteredProducts); // Ergebnisse anzeigen
-        })
-        .catch(error => {
-            console.error('Fehler beim Abrufen der Daten:', error);
-            alert("Es gab ein Problem bei der Suche.");
-        });
+function searchProducts(query) {
+    // Filtern der Produkte anhand des Suchbegriffs
+    const filteredProducts = mockData.filter(product =>
+        product.title.toLowerCase().includes(query)
+    );
+    displayResults(filteredProducts); // Ergebnisse anzeigen
 }
 
 function displayResults(products) {
