@@ -1,7 +1,6 @@
-document.getElementById('searchButton').addEventListener('click', function() {
-    const query = document.getElementById('productSearch').value;
+document.getElementById('searchButton').addEventListener('click', function () {
+    const query = document.getElementById('productSearch').value.toLowerCase();
     if (query) {
-        // API-Aufruf simulieren
         searchProducts(query);
     } else {
         alert("Bitte einen Suchbegriff eingeben.");
@@ -9,21 +8,20 @@ document.getElementById('searchButton').addEventListener('click', function() {
 });
 
 function searchProducts(query) {
-    // Simulierte Produktdaten (mocked data)
-    const mockData = [
-        { name: "Refurbished Laptop A", price: 299.99, seller: "TechStore" },
-        { name: "Refurbished Smartphone B", price: 149.99, seller: "GadgetShop" },
-        { name: "Refurbished Tablet C", price: 199.99, seller: "TechWarehouse" },
-        { name: "Refurbished Laptop D", price: 399.99, seller: "RefurbTech" }
-    ];
+    const apiUrl = `https://fakestoreapi.com/products`;
 
-    // Filtere die mock-Daten nach dem Suchbegriff
-    const filteredResults = mockData.filter(product =>
-        product.name.toLowerCase().includes(query.toLowerCase())
-    );
-
-    // Zeige die Ergebnisse an
-    displayResults(filteredResults);
+    fetch(apiUrl)
+        .then(response => response.json()) // Die Antwort als JSON parsen
+        .then(data => {
+            const filteredProducts = data.filter(product =>
+                product.title.toLowerCase().includes(query)
+            );
+            displayResults(filteredProducts); // Ergebnisse anzeigen
+        })
+        .catch(error => {
+            console.error('Fehler beim Abrufen der Daten:', error);
+            alert("Es gab ein Problem bei der Suche.");
+        });
 }
 
 function displayResults(products) {
@@ -33,12 +31,17 @@ function displayResults(products) {
     if (products.length > 0) {
         products.forEach(product => {
             const productDiv = document.createElement('div');
-            productDiv.classList.add('col-md-3', 'mb-4'); // Bootstrap Grid-Klassen für Layout
-            productDiv.classList.add('product');
+            productDiv.classList.add('col-md-3', 'mb-4'); // Bootstrap Grid-Klassen
             productDiv.innerHTML = `
-                <h3>${product.name}</h3>
-                <p>Preis: €${product.price.toFixed(2)}</p>
-                <p>Verkäufer: ${product.seller}</p>
+                <div class="card">
+                    <img src="${product.image}" class="card-img-top" alt="${product.title}" />
+                    <div class="card-body">
+                        <h5 class="card-title">${product.title}</h5>
+                        <p class="card-text">Preis: €${product.price.toFixed(2)}</p>
+                        <p class="card-text">${product.category}</p>
+                        <a href="#" class="btn btn-primary">Mehr erfahren</a>
+                    </div>
+                </div>
             `;
             resultContainer.appendChild(productDiv);
         });
