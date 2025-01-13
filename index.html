@@ -1,41 +1,31 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Untitled</title>
-  <link rel="stylesheet" href="./style.css">
-
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Refurbished Tech Preisvergleich</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Refurbished Tech Preisvergleich</h1>
-    </header>
+    <div class="container">
+        <header class="my-5 text-center">
+            <h1>Refurbished Tech Preisvergleich</h1>
+        </header>
 
-    <section class="search">
-        <input type="text" id="productSearch" placeholder="Nach refurbished Tech suchen..." />
-        <button id="searchButton">Suchen</button>
-    </section>
+        <section class="search mb-5 text-center">
+            <input type="text" id="productSearch" class="form-control w-50 mx-auto" placeholder="Nach refurbished Tech suchen..." />
+            <button id="searchButton" class="btn btn-primary mt-3">Suchen</button>
+        </section>
 
-    <section id="results">
-        <h2>Suchergebnisse:</h2>
-        <div id="resultContainer"></div>
-    </section>
+        <section id="results">
+            <h2 class="text-center mb-4">Suchergebnisse:</h2>
+            <div id="resultContainer" class="row">
+                <!-- Ergebnisse werden hier angezeigt -->
+            </div>
+        </section>
+    </div>
 
     <script src="script.js"></script>
-</body>
-</html>
-<!-- partial -->
-  <script  src="./script.js"></script>
-
 </body>
 </html>
